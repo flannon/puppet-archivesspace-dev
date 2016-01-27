@@ -6,8 +6,8 @@ class archivesspace_dev::install
 {
     vcsrepo { '/opt/archivesspace':
       ensure   => present,
-      owner    => 'root',
-      group    => 'root',
+      owner    => 'ec2-user',
+      group    => 'ec2-user',
       provider => git,
       require  => Package[ 'git' ],
       source   => $source,
