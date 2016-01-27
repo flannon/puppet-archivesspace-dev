@@ -3,6 +3,7 @@ class archivesspace_dev (
   $revision = archivesspace_dev::params::revision,
   $source = archivesspace_dev::params::source,
 ) inherits archivesspace_dev::params {
-  require archivesspace::dev-install
-  require archivesspace::dev-bootstrap
+  require archivesspace_dev::install
+  require archivesspace_dev::bootstrap
+  include archivesspace_dev::service
 }
