@@ -17,12 +17,12 @@ class archivesspace_dev::bootstrap (
       command  => '/opt/archivesspace/build/run bootstrap',
       cwd      => '/opt/archivesspace',
       require  => Vcsrepo['/opt/archivesspace'],
-      notify   => File [ '/opt/archivesspace/.aspace-installed/' ],
       timeout  => 1800,
       creates  => '/opt/archivesspace/gems/gems',
+      notify   => File [ '/opt/archivesspace/.aspace-installed/' ],
     }
 
-    $msg = "This file is a marker to stop puppet Exec from
+    $msg = "    This file is a marker to stop puppet Exec from
     re-installing aspace-dev. Puppet will not re-run
     build/run bootstrap if this file exists."
 
