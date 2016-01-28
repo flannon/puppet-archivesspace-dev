@@ -9,14 +9,14 @@ class archivesspace_dev::service (
 
   exec { 'build/run backend:devserver' :
     cwd     => "${install_dir}",
-    command => "${install_dir}/build/run  backend:devserver",
+    command => "${install_dir}/build/run  backend:devserver &",
     creates => "${install_dir}/.devserver_backend_started",
     timeout => 1800,
     notify  => File [ "${install_dir}/.devserver_backend_started"],
     require => Vcsrepo["${install_dir}"],
   }
 
-  file { "${install_dir}/.devserver_backend_started]":
+  file { "${install_dir}/.devserver_backend_started":
     ensure  => present,
     content => 'aspace backend devserver started',
     owner   => "${user}",
@@ -25,14 +25,14 @@ class archivesspace_dev::service (
 
   exec { 'build/run frontend:devserver' :
     cwd     => "${install_dir}",
-    command => "${install_dir}/build/run  frontend:devserver",
+    command => "${install_dir}/build/run  frontend:devserver &",
     creates => "${install_dir}/.devserver_frontend_started",
     timeout => 1800,
     notify  => File [ "${install_dir}/.devserver_frontend_started"],
     require => Vcsrepo["${install_dir}"],
   }
 
-  file { "${::install_dir}/.devserver_frontend_started]":
+  file { "${install_dir}/.devserver_frontend_started":
     ensure  => present,
     content => 'aspace frontend devserver started',
     owner   => "${user}",
@@ -41,30 +41,30 @@ class archivesspace_dev::service (
 
   exec { 'build/run public:devserver' :
     cwd     => "${install_dir}",
-    command => "${install_dir}/build/run  public:devserver",
+    command => "${install_dir}/build/run  public:devserver &",
     creates => "${install_dir}/.devserver_public_started",
     timeout => 1800,
     notify  => File [ "${install_dir}/.devserver_public_started"],
     require => Vcsrepo["${install_dir}"],
   }
 
-  file { "${::install_dir}/.devserver_public_started]":
+  file { "${install_dir}/.devserver_public_started":
     ensure  => present,
-    content => 'aspace pulic devserver started',
+    content => 'aspace public devserver started',
     owner   => "${user}",
     group   => "${user}",
   }
 
   exec { 'build/run indexer' :
     cwd     => "${install_dir}",
-    command => "${install_dir}/build/run  indexer",
+    command => "${install_dir}/build/run  indexer &",
     creates => "${install_dir}/.devserver_indexer_started",
     timeout => 1800,
     notify  => File [ "${install_dir}/.devserver_indexer_started"],
     require => Vcsrepo["${install_dir}"],
   }
 
-  file { "${::install_dir}/.devserver_indexer_started]":
+  file { "${install_dir}/.devserver_indexer_started":
     ensure  => present,
     content => 'aspace indexer devserver started',
     owner   => "${user}",
