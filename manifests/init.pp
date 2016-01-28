@@ -6,7 +6,11 @@ class archivesspace_dev (
   $source = 'https://github.com/NYULibraries/archivesspace.git'
   #) inherits archivesspace_dev::params {
   ) {
-  require archivesspace_dev::install
-  #require archivesspace_dev::bootstrap
-  #include archivesspace_dev::service
+    #anchor { 'archivesspace_dev::begin': } ->
+    include archivesspace_dev::install  
+    include archivesspace_dev::bootstrap
+    #include archivesspace_dev::service
+    #anchore { 'archivesspace_dev::end': }
+    Class['archivesspace_dev::install'] -> Class ['archivesspace_dev::bootstrap']
+
 }

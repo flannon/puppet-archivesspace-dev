@@ -1,14 +1,13 @@
 class archivesspace_dev::install (
-  #$revision = archivesspace_dev::params::revision,
-  $revision = 'master',
-  #$source = archivesspace_dev::params::source,
-  $source = 'https://github.com/NYULibraries/archivesspace.git'
-  #) inherits archivesspace_dev::params {
-) {
-    vcsrepo { '/opt/archivesspace':
+  $install_dir = $archivesspace_dev::params::install_dir,
+  $revision    = $archivesspace_dev::params::revision,
+  $source      = $archivesspace_dev::params::source,
+  $user        = $archivesspace_dev::params
+  ) inherits archivesspace_dev::params {
+    vcsrepo { $install_dir:
       ensure   => present,
-      owner    => 'ec2-user',
-      group    => 'ec2-user',
+      owner    => $user,
+      group    => $user,
       provider => git,
       require  => Package[ 'git' ],
       source   => $source,
