@@ -4,8 +4,11 @@ class archivesspace_dev::params {
   $source      = 'https://github.com/NYULibraries/archivesspace.git'
 
   case $::osfamily {
-    'redhat': {
+    'RedHat': {
       $user = 'ec2-user'
+    }
+    'Darwin': {
+      $user = $sp_user_name
     }
     default: {
       fail ("osfamily ${::osfamily} is not supported by this module")

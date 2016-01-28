@@ -1,5 +1,6 @@
 class archivesspace_dev::bootstrap (
- $install_dir = $archivesspace_dev::params::install_dir 
+ $install_dir = $archivesspace_dev::params::install_dir,
+ $user        = $archivesspace_dev::params::user
 ) inherits archivesspace_dev::params {
 
     ##  Need to assemble the config file and attach it to the
@@ -13,22 +14,24 @@ class archivesspace_dev::bootstrap (
     #  notify => Exec['build/run'],
     #}
 
-    exec { 'build/run' :
-      command  => '/opt/archivesspace/build/run bootstrap',
-      cwd      => '/opt/archivesspace',
-      require  => Vcsrepo['/opt/archivesspace'],
+    exec { 'build/run bootstrap' :
+      cwd      => "${install_dir}",
+      command  => "${install_dir}/build/run bootstrap",
       timeout  => 1800,
-      creates  => '/opt/archivesspace/gems/gems',
-      notify   => File [ '/opt/archivesspace/.aspace-installed/' ],
+      creates  => "${install_dir}/.devserver_bootstrap_has_run",
+      notify   => File [ "${install_dir}/.devserver_bootstrap_has_run/" ],
+      require  => Vcsrepo["${install_dir}"],
     }
 
     $msg = "    This file is a marker to stop puppet Exec from
-    re-installing aspace-dev. Puppet will not re-run
+    re-running build/run bootstrap. Puppet will not re-run
     build/run bootstrap if this file exists."
 
-    file { '/opt/archivesspace/.aspace-installed':
+    file { "${install_dir}/.devserver_bootstrap_has_run":
       ensure  => present,
       content => $msg,
+      owner   => $user,
+      group   => $user,
     }
 
 }
