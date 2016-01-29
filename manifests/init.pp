@@ -5,7 +5,7 @@ class archivesspace_dev (
   $user = archivesspace_dev::params::user,
   ) inherits archivesspace_dev::params {
     #) {
-    $include archivesspace_dev::install
+    #include archivesspace_dev::install
     class { 'archivesspace_dev::install' :
       revision => 'master',
       source   => 'https://github.com/NYULibraries/archivesspace.git',
