@@ -10,8 +10,8 @@ class archivesspace_dev (
     #anchor { 'archivesspace_dev::begin': } ->
     #include archivesspace_dev::install  
     class { 'archivesspace_dev::install' :
-      $revision => 'v1.4.2',
-      $source   => 'https://github.com/NYULibraries/archivesspace.git',
+      revision => 'v1.4.2',
+      source   => 'https://github.com/NYULibraries/archivesspace.git',
     }
     #include archivesspace_dev::bootstrap
     #include archivesspace_dev::service
