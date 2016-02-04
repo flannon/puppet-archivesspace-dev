@@ -5,7 +5,7 @@ class archivesspace_dev::params {
 
   case $::osfamily {
     'RedHat': {
-      $user = 'ec2-user'
+      $user = $id
     }
     'Darwin': {
       $user = $sp_user_name
