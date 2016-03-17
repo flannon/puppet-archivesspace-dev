@@ -3,16 +3,11 @@ class archivesspace_dev::bootstrap (
  $user        = $archivesspace_dev::params::user
 ) inherits archivesspace_dev::params {
 
-    ##  Need to assemble the config file and attach it to the
-    #   mysql database at this point.
-    #
-
-    #file { '/opt/archivesspace/common/config/config.rb' :
-    #  ensure => present,
-    #  source => 'puppet://modules/archivesspace/dev-config.rb',
-    #  mode   => '0644',
-    #  notify => Exec['build/run'],
-    #}
+    file { '/opt/archivesspace/common/config/config.rb' :
+      ensure => present,
+      source => 'puppet://modules/archivesspace/config.rb',
+      mode   => '0644',
+    }
 
     exec { 'build/run bootstrap' :
       cwd      => "${install_dir}",
@@ -20,7 +15,7 @@ class archivesspace_dev::bootstrap (
       timeout  => 1800,
       creates  => "${install_dir}/.devserver_bootstrap_has_run",
       notify   => File [ "${install_dir}/.devserver_bootstrap_has_run/" ],
-      require  => Vcsrepo["${install_dir}"],
+      require  => [ Vcsrepo["${install_dir}"], Exec['build/run bootstrap'] ],
     }
 
     $msg = "    This file is a marker to stop puppet Exec from
