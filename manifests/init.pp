@@ -9,7 +9,7 @@ class archivesspace_dev (
       owner    => $user,
       group    => $user,
       provider => git,
-      require  => Package[ 'git' ],
+      #require  => Package[ 'git' ],
       source   => $source,
       revision => $revision,
     } 
