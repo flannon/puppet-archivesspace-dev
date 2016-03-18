@@ -1,8 +1,9 @@
 class archivesspace_dev (
-  $install_dir = archivesspace_dev::params::install_dir,
-  $revision = archivesspace_dev::params::revision,
-  $source = archivesspace_dev::params::source,
-  $user = archivesspace_dev::params::user,
+  $install_dir     = archivesspace_dev::params::install_dir,
+  $revision        = archivesspace_dev::params::revision,
+  $source          = archivesspace_dev::params::source,
+  $user            = archivesspace_dev::params::user,
+  $as_mysql_passwd = archivesspace_dev::params::as_mysql_passwd,
   ) inherits archivesspace_dev::params {
     vcsrepo { $install_dir:
       ensure   => present,

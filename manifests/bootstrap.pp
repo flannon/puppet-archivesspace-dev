@@ -3,11 +3,11 @@ class archivesspace_dev::bootstrap (
  $user        = $archivesspace_dev::params::user
 ) inherits archivesspace_dev::params {
 
-    file { '/opt/archivesspace/common/config/config.rb' :
-      ensure => present,
-      source => 'puppet://modules/archivesspace/config.rb',
-      mode   => '0644',
-    }
+   #file { '/opt/archivesspace/common/config/config.rb' :
+   #   ensure => present,
+   #   source => 'puppet://modules/archivesspace/config.rb',
+   #   mode   => '0644',
+   #}
 
     exec { 'build/run bootstrap' :
       cwd      => "${install_dir}",
