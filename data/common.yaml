@@ -1,0 +1,6 @@
+---
+archivesspace_devenv::install_dir: /opt/archivesspace
+archivesspace_devenv::revision: master
+archivesspace_devenv::source: https://github.com/NYULibraries/archivesspace.git
+
+
