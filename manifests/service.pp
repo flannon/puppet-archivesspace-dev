@@ -1,4 +1,4 @@
-class archivesspace_dev::service (
+class archivesspace_devenv::service (
   $install_dir = $archivesspace_dev::params::install_dir,
   $user = $archivesspace_dev::params::user
 ) inherits archivesspace_dev::params {

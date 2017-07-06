@@ -1,7 +1,7 @@
-class archivesspace_dev::bootstrap (
+class archivesspace_devenv::bootstrap (
  $install_dir = $archivesspace_dev::params::install_dir,
  $user        = $archivesspace_dev::params::user
-) inherits archivesspace_dev::params {
+) inherits archivesspace_devenv::params {
 
     ##  Need to assemble the config file and attach it to the
     #   mysql database at this point.

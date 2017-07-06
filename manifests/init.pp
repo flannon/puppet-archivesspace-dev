@@ -1,9 +1,9 @@
-class archivesspace_dev (
+class archivesspace_devenv (
   $install_dir = archivesspace_dev::params::install_dir,
   $revision = archivesspace_dev::params::revision,
   $source = archivesspace_dev::params::source,
   $user = archivesspace_dev::params::user,
-  ) inherits archivesspace_dev::params {
+  ) inherits archivesspace_devenv::params {
     #) {
     #include archivesspace_dev::install
     class { 'archivesspace_dev::install' :

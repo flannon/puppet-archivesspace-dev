@@ -1,4 +1,4 @@
-class archivesspace_dev::params {
+class archivesspace_devenv::params {
   $install_dir = '/opt/archivesspace'
   $revision    = 'master'
   $source      = 'https://github.com/NYULibraries/archivesspace.git'
