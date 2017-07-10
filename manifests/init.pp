@@ -11,7 +11,7 @@ class archivesspace_devenv (
       source   => $source,
     }
     include archivesspace_devenv::bootstrap
-    include archivesspace_devenv::service
+    #include archivesspace_devenv::service
   #Class['archivesspace_devenv::install']->
   #  Class ['archivesspace_devenv::bootstrap']->
   #  Class['archivesspace_devenv::service']
