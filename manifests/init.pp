@@ -1,8 +1,8 @@
 class archivesspace_devenv (
-  String $install_dir = archivesspace_devenv::install_dir),
-  String $revision = archivesspace_devenv::revision),
-  String $source = archivesspace_devenv::source),
-  String $user = archivesspace_devenv::user),
+  String $install_dir = lookup('archivesspace_devenv::install_dir', String, 'first'),
+  String $revision = lookup('archivesspace_devenv::revision', String, 'first'),
+  String $source = lookup('archivesspace_devenv::source', String, 'first'),
+  String $user = lookup('archivesspace_devenv::user', String, 'first'),
 ) {
     #) {
     #include archivesspace_devenv::install
