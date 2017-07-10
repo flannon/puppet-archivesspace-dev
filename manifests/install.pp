@@ -3,7 +3,7 @@ class archivesspace_devenv::install (
   String $revision    = lookup('archivesspace_devenv::revision', String, 'first'),
   String $source      = lookup('archivesspace_devenv::source', String, 'first'),
   String $user        = lookup('archivesspace_devenv::user', String, 'first'),
-  ) inherits archivesspace_devenv::params {
+){
     vcsrepo { $install_dir:
       ensure   => present,
       owner    => $user,
