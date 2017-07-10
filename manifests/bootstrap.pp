@@ -1,6 +1,6 @@
 class archivesspace_devenv::bootstrap (
- String $install_dir = $archivesspace_dev::install_dir),
- String $user        = $archivesspace_dev::user),
+ String $install_dir = $archivesspace_devenv::install_dir),
+ String $user        = $archivesspace_devenv::user),
 ) {
 
     ##  Need to assemble the config file and attach it to the

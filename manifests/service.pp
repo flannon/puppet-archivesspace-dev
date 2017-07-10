@@ -1,6 +1,6 @@
 class archivesspace_devenv::service (
-  String $install_dir = lookup($archivesspace_dev::install_dir),
-  String $user = lookup($archivesspace_dev::user),
+  String $install_dir = lookup($archivesspace_devenv::install_dir),
+  String $user = lookup($archivesspace_devenv::user),
 ){
 
   # Note: the following ports should be opend in in iptables
