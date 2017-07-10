@@ -1,16 +1,15 @@
-class archivesspace_dev::install (
-  $install_dir     = $archivesspace_dev::params::install_dir,
-  $revision        = $archivesspace_dev::params::revision,
-  $source          = $archivesspace_dev::params::source,
-  $user            = $archivesspace_dev::params::user
-  $as_mysql_passwd = archivesspace_dev::params::as_mysql_passwd,
-  ) inherits archivesspace_dev::params {
+class archivesspace_devenv::install (
+  String $install_dir = lookup('archivesspace_devenv::install_dir', String, 'first'),
+  String $revision    = lookup('archivesspace_devenv::revision', String, 'first'),
+  String $source      = lookup('archivesspace_devenv::source', String, 'first'),
+  String $user        = lookup('archivesspace_devenv::user', String, 'first'),
+){
     vcsrepo { $install_dir:
       ensure   => present,
       owner    => $user,
       group    => $user,
       provider => git,
-      #require  => Package[ 'git' ],
+      require  => Package[ 'git' ],
       source   => $source,
       revision => $revision,
     }
