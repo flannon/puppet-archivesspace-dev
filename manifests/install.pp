@@ -1,8 +1,8 @@
 class archivesspace_devenv::install (
-  $install_dir = $archivesspace_dev::params::install_dir,
-  $revision    = $archivesspace_dev::params::revision,
-  $source      = $archivesspace_dev::params::source,
-  $user        = $archivesspace_dev::params::user
+  String $install_dir = lookup($archivesspace_dev::install_dir),
+  String $revision    = lookup($archivesspace_dev::revision),
+  String $source      = lookup($archivesspace_dev::source),
+  String $user        = lookup($archivesspace_dev::user),
   ) inherits archivesspace_devenv::params {
     vcsrepo { $install_dir:
       ensure   => present,

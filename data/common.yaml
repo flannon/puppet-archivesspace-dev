@@ -1,6 +1,12 @@
 ---
 archivesspace_devenv::install_dir: /opt/archivesspace
 archivesspace_devenv::revision: master
-archivesspace_devenv::source: https://github.com/NYULibraries/archivesspace.git
+archivesspace_dev::source: 'https://github.com/archivesspace/archivesspace.git'
+archivesspace_dev::user: 'vagrant'
+archivesspace_dev::mysql_asdb_passwd: 'aspace'
+mysql::asdb_name: 'asdb'
+mysql::asdb_passwd: 'aspace'
+mysql::asdb_user: 'asdb'
+mysql::root_passwd: 'vagrant'
 
 

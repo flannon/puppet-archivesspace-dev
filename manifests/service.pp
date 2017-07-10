@@ -1,7 +1,7 @@
 class archivesspace_devenv::service (
-  $install_dir = $archivesspace_dev::params::install_dir,
-  $user = $archivesspace_dev::params::user
-) inherits archivesspace_dev::params {
+  String $install_dir = lookup($archivesspace_dev::install_dir),
+  String $user = lookup($archivesspace_dev::user),
+){
 
   # Note: the following ports should be opend in in iptables
   # for the archivesspace development envrionment to work,
