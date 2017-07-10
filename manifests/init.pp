@@ -8,7 +8,7 @@ class archivesspace_devenv (
     #include archivesspace_devenv::install
     class { 'archivesspace_devenv::install' :
       revision => $revision,
-      source   => 'https://github.com/NYULibraries/archivesspace.git',
+      source   => $source,
     }
     include archivesspace_devenv::bootstrap
     include archivesspace_devenv::service
