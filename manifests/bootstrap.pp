@@ -19,7 +19,7 @@ class archivesspace_devenv::bootstrap (
       command  => "${install_dir}/build/run bootstrap",
       timeout  => 1800,
       creates  => "${install_dir}/.devserver_bootstrap_has_run",
-      notify   => File [ "${install_dir}/.devserver_bootstrap_has_run/" ],
+      notify   => File["${install_dir}/.devserver_bootstrap_has_run/"],
       require  => Vcsrepo["${install_dir}"],
     }
 
